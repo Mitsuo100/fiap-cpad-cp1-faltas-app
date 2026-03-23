@@ -1,10 +1,11 @@
+```md
 # Registro de Faltas - FIAP
 
 ## a) Sobre o Projeto
 
 O Registro de Faltas é um aplicativo mobile desenvolvido com React Native e Expo que permite gerenciar a presença de alunos de forma simples e eficiente.
 
-O objetivo do app é substituir o controle manual de faltas, oferecendo uma solução digital para registro e consulta rápida.
+O objetivo do app é substituir o controle manual de faltas, oferecendo uma solução digital para registro, consulta e persistência de dados.
 
 ### Operação escolhida
 A operação escolhida foi a gestão acadêmica, pois o controle de presença é essencial no acompanhamento de alunos e no ambiente educacional.
@@ -14,6 +15,8 @@ A operação escolhida foi a gestão acadêmica, pois o controle de presença é
 - Cadastro de novos alunos
 - Registro de faltas por aluno
 - Visualização do histórico de faltas
+- Exclusão de alunos
+- Persistência de dados com AsyncStorage
 - Navegação entre telas com Expo Router
 - Interface estilizada com tema escuro
 
@@ -59,9 +62,10 @@ npx expo start --android
 #### Cadastro
 ![Cadastro](assets/images/cadastro.png)
 
-### Vídeo
+### Registro
+![Registro](assets/images/registro.png)
 
-Demonstração do funcionamento do app:
+### Vídeo
 
 ![Demonstração](assets/demo.gif)
 
@@ -70,30 +74,33 @@ Demonstração do funcionamento do app:
 ## e) Decisões Técnicas
 
 ### Estrutura do projeto
-O projeto foi organizado em:
-- app/ → telas e navegação
-- data/ → gerenciamento de dados
+- app/ → telas
+- data/ → dados e AsyncStorage
 - components/ → componentes reutilizáveis
 
 ### Hooks utilizados
-- useState para controle de estado
-- useEffect (quando necessário)
+- useState
+- useEffect
 
-### Navegação
-Foi utilizada navegação com Expo Router, permitindo transição entre as telas do aplicativo.
+### Persistência de dados
+AsyncStorage foi usado para salvar alunos e faltas.
+
+### Exclusão de alunos
+Foi adicionada remoção com atualização automática da lista.
 
 ---
 
 ## f) Próximos Passos
 
-- Implementar persistência de dados com AsyncStorage
-- Evitar cadastro de alunos duplicados
-- Adicionar opção de remover alunos
-- Melhorar a interface com animações
-- Criar gráficos de faltas
+- Evitar duplicados
+- Melhor UI
+- Animações
+- Gráficos de faltas
+- Confirmação ao excluir
 
 ---
 
 ## Status do Projeto
 
 Funcional e pronto para avaliação.
+```
