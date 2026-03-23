@@ -1,54 +1,99 @@
-<<<<<<< HEAD
-# Welcome to your Expo app 👋
+# Registro de Faltas - FIAP
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## a) Sobre o Projeto
 
-## Get started
+O Registro de Faltas é um aplicativo mobile desenvolvido com React Native e Expo que permite gerenciar a presença de alunos de forma simples e eficiente.
 
-1. Install dependencies
+O objetivo do app é substituir o controle manual de faltas, oferecendo uma solução digital para registro e consulta rápida.
 
-   ```bash
-   npm install
-   ```
+### Operação escolhida
+A operação escolhida foi a gestão acadêmica, pois o controle de presença é essencial no acompanhamento de alunos e no ambiente educacional.
 
-2. Start the app
+### Funcionalidades implementadas
+- Listagem de alunos
+- Cadastro de novos alunos
+- Registro de faltas por aluno
+- Visualização do histórico de faltas
+- Navegação entre telas com Expo Router
+- Interface estilizada com tema escuro
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## b) Integrantes do Grupo
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Pedro Mitsuo Risardi Nisiaymamoto  
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## c) Como Rodar o Projeto
 
-When you're ready, run:
+### Pré-requisitos
+- Node.js instalado
+- Expo CLI (via npx)
+- Android Studio (emulador) ou celular com Expo Go
 
-```bash
-npm run reset-project
-```
+### Passo a passo
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+git clone https://github.com/Mitsuo100/fiap-cpad-cp1-faltas-app.git  
+cd fiap-cpad-cp1-faltas-app  
+npm install  
+npx expo start -c  
 
-## Learn more
+Para abrir no Android:
+- Pressione "a" no terminal  
+ou  
+npx expo start --android  
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## d) Demonstração
 
-## Join the community
+### Prints das telas
 
-Join our community of developers creating universal apps.
+#### Tela Inicial
+![Home](assets/home.png)
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-=======
-# fiap-cpad-cp1-faltas-app
->>>>>>> 3c14b83371e3be1f8c9a2e429e6a117a6c1d36bb
+#### Histórico
+![Histórico](assets/historico.png)
+
+#### Cadastro
+![Cadastro](assets/cadastro.png)
+
+### Vídeo
+
+Demonstração do funcionamento do app:
+
+![Demonstração](assets/demo.gif)
+
+---
+
+## e) Decisões Técnicas
+
+### Estrutura do projeto
+O projeto foi organizado em:
+- app/ → telas e navegação
+- data/ → gerenciamento de dados
+- components/ → componentes reutilizáveis
+
+### Hooks utilizados
+- useState para controle de estado
+- useEffect (quando necessário)
+
+### Navegação
+Foi utilizada navegação com Expo Router, permitindo transição entre as telas do aplicativo.
+
+---
+
+## f) Próximos Passos
+
+- Implementar persistência de dados com AsyncStorage
+- Evitar cadastro de alunos duplicados
+- Adicionar opção de remover alunos
+- Melhorar a interface com animações
+- Criar gráficos de faltas
+
+---
+
+## Status do Projeto
+
+Funcional e pronto para avaliação.
