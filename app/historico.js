@@ -1,7 +1,19 @@
 import { View, Text, FlatList, StyleSheet } from 'react-native';
-import { alunos } from '../data/alunos';
+import { useEffect, useState } from 'react';
+import { carregarAlunos } from '../data/storage';
 
 export default function Historico() {
+  const [alunos, setAlunos] = useState([]);
+
+  async function load() {
+    const data = await carregarAlunos();
+    setAlunos(data);
+  }
+
+  useEffect(() => {
+    load();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Histórico de Faltas</Text>
