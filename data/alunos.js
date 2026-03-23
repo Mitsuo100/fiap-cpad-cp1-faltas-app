@@ -5,15 +5,23 @@ export let alunos = [
 ];
 
 export function adicionarAluno(nome) {
-  if (!nome || nome.trim() === "") return;
+  if (!nome || nome.trim() === "") return "Nome inválido";
 
-  const novoAluno = {
+  const existe = alunos.some(a => a.nome.toLowerCase() === nome.toLowerCase());
+  if (existe) return "Aluno já existe";
+
+  const novo = {
     id: alunos.length + 1,
     nome: nome.trim(),
     faltas: 0
   };
 
-  alunos.push(novoAluno);
+  alunos.push(novo);
+  return "ok";
+}
+
+export function removerAluno(id) {
+  alunos = alunos.filter(aluno => aluno.id !== id);
 }
 
 export function adicionarFalta(nome) {

@@ -5,10 +5,17 @@ import { router } from 'expo-router';
 
 export default function Cadastro() {
   const [nome, setNome] = useState('');
+  const [erro, setErro] = useState('');
 
   function cadastrar() {
-    if (nome.trim() === '') return;
-    adicionarAluno(nome);
+    const resultado = adicionarAluno(nome);
+
+    if (resultado !== "ok") {
+      setErro(resultado);
+      return;
+    }
+
+    setErro('');
     setNome('');
     router.push('/');
   }
@@ -24,6 +31,8 @@ export default function Cadastro() {
         value={nome}
         onChangeText={setNome}
       />
+
+      {erro !== '' && <Text style={styles.erro}>{erro}</Text>}
 
       <TouchableOpacity style={styles.botao} onPress={cadastrar}>
         <Text style={styles.textoBotao}>Cadastrar</Text>
@@ -50,7 +59,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     padding: 15,
     borderRadius: 10,
-    marginBottom: 20
+    marginBottom: 10
+  },
+  erro: {
+    color: 'red',
+    marginBottom: 10
   },
   botao: {
     backgroundColor: '#ED145B',
