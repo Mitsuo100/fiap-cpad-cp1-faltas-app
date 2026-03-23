@@ -1,4 +1,4 @@
-```md
+
 # Registro de Faltas - FIAP
 
 ## a) Sobre o Projeto
@@ -103,4 +103,3 @@ Foi adicionada remoção com atualização automática da lista.
 ## Status do Projeto
 
 Funcional e pronto para avaliação.
-```
