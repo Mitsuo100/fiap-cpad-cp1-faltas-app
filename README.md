@@ -51,13 +51,13 @@ npx expo start --android
 ### Prints das telas
 
 #### Tela Inicial
-![Home](assets/home.png)
+![Home](assets/images/home.png)
 
 #### Histórico
-![Histórico](assets/historico.png)
+![Histórico](assets/images/historico.png)
 
 #### Cadastro
-![Cadastro](assets/cadastro.png)
+![Cadastro](assets/images/cadastro.png)
 
 ### Vídeo
 
