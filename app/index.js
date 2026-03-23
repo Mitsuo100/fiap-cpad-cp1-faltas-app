@@ -1,4 +1,4 @@
-import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { Link } from 'expo-router';
 import { useState, useEffect } from 'react';
 import { carregarAlunos, salvarAlunos } from '../data/storage';
@@ -16,20 +16,9 @@ export default function Home() {
   }
 
   async function excluir(id) {
-    const novaLista = alunos.filter(a => a.id !== id);
+    const novaLista = alunos.filter(aluno => aluno.id !== id);
     setAlunos(novaLista);
     await salvarAlunos(novaLista);
-  }
-
-  function confirmarExclusao(id) {
-    Alert.alert(
-      "Excluir aluno",
-      "Tem certeza?",
-      [
-        { text: "Cancelar", style: "cancel" },
-        { text: "Excluir", style: "destructive", onPress: () => excluir(id) }
-      ]
-    );
   }
 
   return (
@@ -41,16 +30,18 @@ export default function Home() {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.cardContainer}>
+            
             <Link href={`/aluno?nome=${item.nome}`} asChild>
               <Text style={styles.card}>{item.nome}</Text>
             </Link>
 
             <TouchableOpacity
               style={styles.deleteBtn}
-              onPress={() => confirmarExclusao(item.id)}
+              onPress={() => excluir(item.id)}
             >
-              <Text style={styles.deleteText}>X</Text>
+              <Text style={styles.deleteText}>Excluir</Text>
             </TouchableOpacity>
+
           </View>
         )}
       />
@@ -94,8 +85,8 @@ const styles = StyleSheet.create({
   },
   deleteBtn: {
     marginLeft: 10,
-    backgroundColor: '#ED145B',
-    padding: 10,
+    backgroundColor: '#ff3b3b',
+    padding: 12,
     borderRadius: 8
   },
   deleteText: {
