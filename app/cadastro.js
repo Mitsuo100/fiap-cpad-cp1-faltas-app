@@ -1,22 +1,34 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { useState } from 'react';
-import { adicionarAluno } from '../data/alunos';
+import { carregarAlunos, salvarAlunos } from '../data/storage';
 import { router } from 'expo-router';
 
 export default function Cadastro() {
   const [nome, setNome] = useState('');
   const [erro, setErro] = useState('');
 
-  function cadastrar() {
-    const resultado = adicionarAluno(nome);
-
-    if (resultado !== "ok") {
-      setErro(resultado);
+  async function cadastrar() {
+    if (!nome.trim()) {
+      setErro("Nome inválido");
       return;
     }
 
-    setErro('');
-    setNome('');
+    const alunos = await carregarAlunos();
+
+    if (alunos.some(a => a.nome.toLowerCase() === nome.toLowerCase())) {
+      setErro("Aluno já existe");
+      return;
+    }
+
+    const novo = {
+      id: Date.now(),
+      nome,
+      faltas: 0
+    };
+
+    const novaLista = [...alunos, novo];
+    await salvarAlunos(novaLista);
+
     router.push('/');
   }
 

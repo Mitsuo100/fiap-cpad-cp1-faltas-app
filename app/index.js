@@ -1,8 +1,37 @@
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Link } from 'expo-router';
-import { alunos, removerAluno } from '../data/alunos';
+import { useState, useEffect } from 'react';
+import { carregarAlunos, salvarAlunos } from '../data/storage';
 
 export default function Home() {
+  const [alunos, setAlunos] = useState([]);
+
+  useEffect(() => {
+    carregar();
+  }, []);
+
+  async function carregar() {
+    const dados = await carregarAlunos();
+    setAlunos(dados);
+  }
+
+  async function excluir(id) {
+    const novaLista = alunos.filter(a => a.id !== id);
+    setAlunos(novaLista);
+    await salvarAlunos(novaLista);
+  }
+
+  function confirmarExclusao(id) {
+    Alert.alert(
+      "Excluir aluno",
+      "Tem certeza?",
+      [
+        { text: "Cancelar", style: "cancel" },
+        { text: "Excluir", style: "destructive", onPress: () => excluir(id) }
+      ]
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Registro de Faltas</Text>
@@ -18,7 +47,7 @@ export default function Home() {
 
             <TouchableOpacity
               style={styles.deleteBtn}
-              onPress={() => removerAluno(item.id)}
+              onPress={() => confirmarExclusao(item.id)}
             >
               <Text style={styles.deleteText}>X</Text>
             </TouchableOpacity>
